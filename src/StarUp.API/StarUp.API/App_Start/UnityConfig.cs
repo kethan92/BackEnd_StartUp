@@ -1,5 +1,9 @@
+using StartUp.Data.Model;
+using StartUp.Data.UnitOfWork;
+using StartUp.Service.Interfaces;
+using StartUp.Service.Services;
 using System;
-
+using System.Data.Entity;
 using Unity;
 
 namespace StarUp.API
@@ -42,6 +46,9 @@ namespace StarUp.API
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<DbContext, StartUpModel>()
+                .RegisterType<IUnitOfWork, UnitOfWork>()
+                .RegisterType<ICategoryService, CategoryService>();
         }
     }
 }
